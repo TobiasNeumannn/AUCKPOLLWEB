@@ -22,4 +22,10 @@ public class AUCKPOLLWEBContext : IdentityDbContext<AUCKPOLLWEBUser>
     }
 
     public DbSet<AUCKPOLLWEB.Models.airQuality> airQuality { get; set; } = default!;
+
+    public DbSet<AUCKPOLLWEB.Models.estuaryQuality> estuaryQuality { get; set; } = default!;
+
+    public DbSet<AUCKPOLLWEB.Models.gWaterQuality> gWaterQuality { get; set; } = default!;
+
+    public DbSet<AUCKPOLLWEB.Models.regions> regions { get; set; } = default!;
 }
