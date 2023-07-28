@@ -6,10 +6,16 @@ namespace AUCKPOLLWEB.Models
     {
         [Key]
         [Display(Name = "Region ID")]
-        public int regionID { get; set; }
+        public int ID { get; set; }
         [Display(Name = "Name")]
         public string region_name { get; set; }
         [Display(Name = "Population")]
         public int region_pop { get; set; }
+
+        public ICollection<airQuality> airQualities { get; set; }
+        public ICollection<estuaryQuality> estuaryQualities { get; set; }
+        public ICollection<gWaterQuality> gWaterQualities { get; set; }
+
+
     }
 }

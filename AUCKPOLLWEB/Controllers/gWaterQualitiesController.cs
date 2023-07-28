@@ -56,7 +56,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("sampleID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
+        public async Task<IActionResult> Create([Bind("sampleID,ID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("sampleID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
+        public async Task<IActionResult> Edit(int id, [Bind("sampleID,ID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
         {
             if (id != gWaterQuality.sampleID)
             {

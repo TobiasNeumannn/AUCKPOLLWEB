@@ -36,7 +36,7 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var regions = await _context.regions
-                .FirstOrDefaultAsync(m => m.regionID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (regions == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("regionID,region_name,region_pop")] regions regions)
+        public async Task<IActionResult> Create([Bind("ID,region_name,region_pop")] regions regions)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +88,9 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("regionID,region_name,region_pop")] regions regions)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,region_name,region_pop")] regions regions)
         {
-            if (id != regions.regionID)
+            if (id != regions.ID)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!regionsExists(regions.regionID))
+                    if (!regionsExists(regions.ID))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var regions = await _context.regions
-                .FirstOrDefaultAsync(m => m.regionID == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (regions == null)
             {
                 return NotFound();
@@ -157,7 +157,7 @@ namespace AUCKPOLLWEB.Controllers
 
         private bool regionsExists(int id)
         {
-          return (_context.regions?.Any(e => e.regionID == id)).GetValueOrDefault();
+          return (_context.regions?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
