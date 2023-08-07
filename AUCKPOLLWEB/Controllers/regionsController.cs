@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AUCKPOLLWEB.Areas.Identity.Data;
 using AUCKPOLLWEB.Models;
 
 namespace AUCKPOLLWEB.Controllers
 {
     public class regionsController : Controller
     {
-        private readonly AUCKPOLLWEBContext _context;
+        private readonly AUCKPOLLWEBContextDb _context;
 
-        public regionsController(AUCKPOLLWEBContext context)
+        public regionsController(AUCKPOLLWEBContextDb context)
         {
             _context = context;
         }
@@ -24,7 +23,7 @@ namespace AUCKPOLLWEB.Controllers
         {
               return _context.regions != null ? 
                           View(await _context.regions.ToListAsync()) :
-                          Problem("Entity set 'AUCKPOLLWEBContext.regions'  is null.");
+                          Problem("Entity set 'AUCKPOLLWEBContextDb.regions'  is null.");
         }
 
         // GET: regions/Details/5
@@ -36,7 +35,7 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var regions = await _context.regions
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.regionID == id);
             if (regions == null)
             {
                 return NotFound();
@@ -56,7 +55,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,region_name,region_pop")] regions regions)
+        public async Task<IActionResult> Create([Bind("regionID,region_name,region_pop")] regions regions)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +87,9 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,region_name,region_pop")] regions regions)
+        public async Task<IActionResult> Edit(int id, [Bind("regionID,region_name,region_pop")] regions regions)
         {
-            if (id != regions.ID)
+            if (id != regions.regionID)
             {
                 return NotFound();
             }
@@ -104,7 +103,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!regionsExists(regions.ID))
+                    if (!regionsExists(regions.regionID))
                     {
                         return NotFound();
                     }
@@ -127,7 +126,7 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var regions = await _context.regions
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.regionID == id);
             if (regions == null)
             {
                 return NotFound();
@@ -143,7 +142,7 @@ namespace AUCKPOLLWEB.Controllers
         {
             if (_context.regions == null)
             {
-                return Problem("Entity set 'AUCKPOLLWEBContext.regions'  is null.");
+                return Problem("Entity set 'AUCKPOLLWEBContextDb.regions'  is null.");
             }
             var regions = await _context.regions.FindAsync(id);
             if (regions != null)
@@ -157,7 +156,7 @@ namespace AUCKPOLLWEB.Controllers
 
         private bool regionsExists(int id)
         {
-          return (_context.regions?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.regions?.Any(e => e.regionID == id)).GetValueOrDefault();
         }
     }
 }

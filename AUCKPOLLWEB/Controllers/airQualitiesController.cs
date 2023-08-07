@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AUCKPOLLWEB.Areas.Identity.Data;
 using AUCKPOLLWEB.Models;
 
 namespace AUCKPOLLWEB.Controllers
 {
     public class airQualitiesController : Controller
     {
-        private readonly AUCKPOLLWEBContext _context;
+        private readonly AUCKPOLLWEBContextDb _context;
 
-        public airQualitiesController(AUCKPOLLWEBContext context)
+        public airQualitiesController(AUCKPOLLWEBContextDb context)
         {
             _context = context;
         }
@@ -22,9 +21,8 @@ namespace AUCKPOLLWEB.Controllers
         // GET: airQualities
         public async Task<IActionResult> Index()
         {
-              return _context.airQuality != null ? 
-                          View(await _context.airQuality.ToListAsync()) :
-                          Problem("Entity set 'AUCKPOLLWEBContext.airQuality'  is null.");
+            var aUCKPOLLWEBContextDb = _context.airQuality.Include(a => a.Region);
+            return View(await aUCKPOLLWEBContextDb.ToListAsync());
         }
 
         // GET: airQualities/Details/5
@@ -36,7 +34,8 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var airQuality = await _context.airQuality
-                .FirstOrDefaultAsync(m => m.sampleID == id);
+                .Include(a => a.Region)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (airQuality == null)
             {
                 return NotFound();
@@ -48,6 +47,7 @@ namespace AUCKPOLLWEB.Controllers
         // GET: airQualities/Create
         public IActionResult Create()
         {
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("sampleID,ID,collection_date,value,unit")] airQuality airQuality)
+        public async Task<IActionResult> Create([Bind("ID,regionID,collection_date,value,unit")] airQuality airQuality)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +64,7 @@ namespace AUCKPOLLWEB.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", airQuality.regionID);
             return View(airQuality);
         }
 
@@ -80,6 +81,7 @@ namespace AUCKPOLLWEB.Controllers
             {
                 return NotFound();
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", airQuality.regionID);
             return View(airQuality);
         }
 
@@ -88,9 +90,9 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("sampleID,ID,collection_date,value,unit")] airQuality airQuality)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,regionID,collection_date,value,unit")] airQuality airQuality)
         {
-            if (id != airQuality.sampleID)
+            if (id != airQuality.ID)
             {
                 return NotFound();
             }
@@ -104,7 +106,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!airQualityExists(airQuality.sampleID))
+                    if (!airQualityExists(airQuality.ID))
                     {
                         return NotFound();
                     }
@@ -115,6 +117,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", airQuality.regionID);
             return View(airQuality);
         }
 
@@ -127,7 +130,8 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var airQuality = await _context.airQuality
-                .FirstOrDefaultAsync(m => m.sampleID == id);
+                .Include(a => a.Region)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (airQuality == null)
             {
                 return NotFound();
@@ -143,7 +147,7 @@ namespace AUCKPOLLWEB.Controllers
         {
             if (_context.airQuality == null)
             {
-                return Problem("Entity set 'AUCKPOLLWEBContext.airQuality'  is null.");
+                return Problem("Entity set 'AUCKPOLLWEBContextDb.airQuality'  is null.");
             }
             var airQuality = await _context.airQuality.FindAsync(id);
             if (airQuality != null)
@@ -157,7 +161,7 @@ namespace AUCKPOLLWEB.Controllers
 
         private bool airQualityExists(int id)
         {
-          return (_context.airQuality?.Any(e => e.sampleID == id)).GetValueOrDefault();
+          return (_context.airQuality?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace AUCKPOLLWEB.Models
 {
@@ -6,7 +7,7 @@ namespace AUCKPOLLWEB.Models
     {
         [Key]
         [Display(Name = "Region ID")]
-        public int ID { get; set; }
+        public int regionID { get; set; }
         [Display(Name = "Name")]
         public string region_name { get; set; }
         [Display(Name = "Population")]
@@ -15,7 +16,5 @@ namespace AUCKPOLLWEB.Models
         public ICollection<airQuality> airQualities { get; set; }
         public ICollection<estuaryQuality> estuaryQualities { get; set; }
         public ICollection<gWaterQuality> gWaterQualities { get; set; }
-
-
     }
 }

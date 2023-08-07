@@ -1,0 +1,125 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AUCKPOLLWEB
+build_property.RootNamespace = AUCKPOLLWEB
+build_property.ProjectDir = C:\Users\Tobi\source\repos\AUCKPOLLWEB\AUCKPOLLWEB\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Tobi\source\repos\AUCKPOLLWEB\AUCKPOLLWEB
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/airQualities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWlyUXVhbGl0aWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/airQualities/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWlyUXVhbGl0aWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/airQualities/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWlyUXVhbGl0aWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/airQualities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWlyUXVhbGl0aWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/airQualities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWlyUXVhbGl0aWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/estuaryQualities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0dWFyeVF1YWxpdGllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/estuaryQualities/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0dWFyeVF1YWxpdGllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/estuaryQualities/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0dWFyeVF1YWxpdGllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/estuaryQualities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0dWFyeVF1YWxpdGllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/estuaryQualities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZXN0dWFyeVF1YWxpdGllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/gWaterQualities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZ1dhdGVyUXVhbGl0aWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/gWaterQualities/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZ1dhdGVyUXVhbGl0aWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/gWaterQualities/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZ1dhdGVyUXVhbGl0aWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/gWaterQualities/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZ1dhdGVyUXVhbGl0aWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/gWaterQualities/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZ1dhdGVyUXVhbGl0aWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/regions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccmVnaW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/regions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccmVnaW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/regions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccmVnaW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/regions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccmVnaW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/regions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccmVnaW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tobi/source/repos/AUCKPOLLWEB/AUCKPOLLWEB/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-kp32oxsawb

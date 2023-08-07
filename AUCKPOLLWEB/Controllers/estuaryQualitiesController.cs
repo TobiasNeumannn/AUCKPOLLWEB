@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AUCKPOLLWEB.Areas.Identity.Data;
 using AUCKPOLLWEB.Models;
 
 namespace AUCKPOLLWEB.Controllers
 {
     public class estuaryQualitiesController : Controller
     {
-        private readonly AUCKPOLLWEBContext _context;
+        private readonly AUCKPOLLWEBContextDb _context;
 
-        public estuaryQualitiesController(AUCKPOLLWEBContext context)
+        public estuaryQualitiesController(AUCKPOLLWEBContextDb context)
         {
             _context = context;
         }
@@ -22,9 +21,8 @@ namespace AUCKPOLLWEB.Controllers
         // GET: estuaryQualities
         public async Task<IActionResult> Index()
         {
-              return _context.estuaryQuality != null ? 
-                          View(await _context.estuaryQuality.ToListAsync()) :
-                          Problem("Entity set 'AUCKPOLLWEBContext.estuaryQuality'  is null.");
+            var aUCKPOLLWEBContextDb = _context.estuaryQuality.Include(e => e.Region);
+            return View(await aUCKPOLLWEBContextDb.ToListAsync());
         }
 
         // GET: estuaryQualities/Details/5
@@ -36,7 +34,8 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var estuaryQuality = await _context.estuaryQuality
-                .FirstOrDefaultAsync(m => m.sampleID == id);
+                .Include(e => e.Region)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (estuaryQuality == null)
             {
                 return NotFound();
@@ -48,6 +47,7 @@ namespace AUCKPOLLWEB.Controllers
         // GET: estuaryQualities/Create
         public IActionResult Create()
         {
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("sampleID,ID,collection_date,indicator,value")] estuaryQuality estuaryQuality)
+        public async Task<IActionResult> Create([Bind("ID,regionID,collection_date,indicator,value")] estuaryQuality estuaryQuality)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +64,7 @@ namespace AUCKPOLLWEB.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", estuaryQuality.regionID);
             return View(estuaryQuality);
         }
 
@@ -80,6 +81,7 @@ namespace AUCKPOLLWEB.Controllers
             {
                 return NotFound();
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", estuaryQuality.regionID);
             return View(estuaryQuality);
         }
 
@@ -88,9 +90,9 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("sampleID,ID,collection_date,indicator,value")] estuaryQuality estuaryQuality)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,regionID,collection_date,indicator,value")] estuaryQuality estuaryQuality)
         {
-            if (id != estuaryQuality.sampleID)
+            if (id != estuaryQuality.ID)
             {
                 return NotFound();
             }
@@ -104,7 +106,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!estuaryQualityExists(estuaryQuality.sampleID))
+                    if (!estuaryQualityExists(estuaryQuality.ID))
                     {
                         return NotFound();
                     }
@@ -115,6 +117,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", estuaryQuality.regionID);
             return View(estuaryQuality);
         }
 
@@ -127,7 +130,8 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var estuaryQuality = await _context.estuaryQuality
-                .FirstOrDefaultAsync(m => m.sampleID == id);
+                .Include(e => e.Region)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (estuaryQuality == null)
             {
                 return NotFound();
@@ -143,7 +147,7 @@ namespace AUCKPOLLWEB.Controllers
         {
             if (_context.estuaryQuality == null)
             {
-                return Problem("Entity set 'AUCKPOLLWEBContext.estuaryQuality'  is null.");
+                return Problem("Entity set 'AUCKPOLLWEBContextDb.estuaryQuality'  is null.");
             }
             var estuaryQuality = await _context.estuaryQuality.FindAsync(id);
             if (estuaryQuality != null)
@@ -157,7 +161,7 @@ namespace AUCKPOLLWEB.Controllers
 
         private bool estuaryQualityExists(int id)
         {
-          return (_context.estuaryQuality?.Any(e => e.sampleID == id)).GetValueOrDefault();
+          return (_context.estuaryQuality?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

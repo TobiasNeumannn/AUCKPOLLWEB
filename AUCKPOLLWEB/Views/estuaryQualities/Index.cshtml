@@ -13,9 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.collection_date)
             </th>
             <th>
@@ -24,15 +21,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.value)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.collection_date)
             </td>
@@ -43,9 +40,12 @@
                 @Html.DisplayFor(modelItem => item.value)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.sampleID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.sampleID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.sampleID">Delete</a>
+                @Html.DisplayFor(modelItem => item.Region.regionID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

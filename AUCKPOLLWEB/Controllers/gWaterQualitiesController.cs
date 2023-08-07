@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AUCKPOLLWEB.Areas.Identity.Data;
 using AUCKPOLLWEB.Models;
 
 namespace AUCKPOLLWEB.Controllers
 {
     public class gWaterQualitiesController : Controller
     {
-        private readonly AUCKPOLLWEBContext _context;
+        private readonly AUCKPOLLWEBContextDb _context;
 
-        public gWaterQualitiesController(AUCKPOLLWEBContext context)
+        public gWaterQualitiesController(AUCKPOLLWEBContextDb context)
         {
             _context = context;
         }
@@ -22,9 +21,8 @@ namespace AUCKPOLLWEB.Controllers
         // GET: gWaterQualities
         public async Task<IActionResult> Index()
         {
-              return _context.gWaterQuality != null ? 
-                          View(await _context.gWaterQuality.ToListAsync()) :
-                          Problem("Entity set 'AUCKPOLLWEBContext.gWaterQuality'  is null.");
+            var aUCKPOLLWEBContextDb = _context.gWaterQuality.Include(g => g.Region);
+            return View(await aUCKPOLLWEBContextDb.ToListAsync());
         }
 
         // GET: gWaterQualities/Details/5
@@ -36,7 +34,8 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var gWaterQuality = await _context.gWaterQuality
-                .FirstOrDefaultAsync(m => m.sampleID == id);
+                .Include(g => g.Region)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (gWaterQuality == null)
             {
                 return NotFound();
@@ -48,6 +47,7 @@ namespace AUCKPOLLWEB.Controllers
         // GET: gWaterQualities/Create
         public IActionResult Create()
         {
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("sampleID,ID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
+        public async Task<IActionResult> Create([Bind("ID,regionID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +64,7 @@ namespace AUCKPOLLWEB.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", gWaterQuality.regionID);
             return View(gWaterQuality);
         }
 
@@ -80,6 +81,7 @@ namespace AUCKPOLLWEB.Controllers
             {
                 return NotFound();
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", gWaterQuality.regionID);
             return View(gWaterQuality);
         }
 
@@ -88,9 +90,9 @@ namespace AUCKPOLLWEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("sampleID,ID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,regionID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
         {
-            if (id != gWaterQuality.sampleID)
+            if (id != gWaterQuality.ID)
             {
                 return NotFound();
             }
@@ -104,7 +106,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!gWaterQualityExists(gWaterQuality.sampleID))
+                    if (!gWaterQualityExists(gWaterQuality.ID))
                     {
                         return NotFound();
                     }
@@ -115,6 +117,7 @@ namespace AUCKPOLLWEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["regionID"] = new SelectList(_context.regions, "regionID", "regionID", gWaterQuality.regionID);
             return View(gWaterQuality);
         }
 
@@ -127,7 +130,8 @@ namespace AUCKPOLLWEB.Controllers
             }
 
             var gWaterQuality = await _context.gWaterQuality
-                .FirstOrDefaultAsync(m => m.sampleID == id);
+                .Include(g => g.Region)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (gWaterQuality == null)
             {
                 return NotFound();
@@ -143,7 +147,7 @@ namespace AUCKPOLLWEB.Controllers
         {
             if (_context.gWaterQuality == null)
             {
-                return Problem("Entity set 'AUCKPOLLWEBContext.gWaterQuality'  is null.");
+                return Problem("Entity set 'AUCKPOLLWEBContextDb.gWaterQuality'  is null.");
             }
             var gWaterQuality = await _context.gWaterQuality.FindAsync(id);
             if (gWaterQuality != null)
@@ -157,7 +161,7 @@ namespace AUCKPOLLWEB.Controllers
 
         private bool gWaterQualityExists(int id)
         {
-          return (_context.gWaterQuality?.Any(e => e.sampleID == id)).GetValueOrDefault();
+          return (_context.gWaterQuality?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

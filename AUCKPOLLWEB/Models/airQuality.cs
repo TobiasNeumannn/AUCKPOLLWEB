@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Drawing;
+using System.Xml.Linq;
 
 namespace AUCKPOLLWEB.Models
 {
@@ -7,11 +7,11 @@ namespace AUCKPOLLWEB.Models
     {
         [Key]
         [Display(Name = "Sample ID")]
-        public int sampleID { get; set; }
-        [Display(Name = "Region ID")]
         public int ID { get; set; }
+        [Display(Name = "Region ID")]
+        public int regionID { get; set; }
         [Display(Name = "Collection Date")]
-        public DateTime collection_date { get; set; }
+        public string collection_date { get; set; }
         [Display(Name = "Value")]
         public float value { get; set; }
         [Display(Name = "Unit")]

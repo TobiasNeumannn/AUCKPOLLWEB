@@ -1,12 +1,8 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using AUCKPOLLWEB.Areas.Identity.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("AUCKPOLLWEBContextConnection") ?? throw new InvalidOperationException("Connection string 'AUCKPOLLWEBContextConnection' not found.");
-
-builder.Services.AddDbContext<AUCKPOLLWEBContext>(options => options.UseSqlServer(connectionString));
-
-builder.Services.AddDefaultIdentity<AUCKPOLLWEBUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AUCKPOLLWEBContext>();
+builder.Services.AddDbContext<AUCKPOLLWEBContextDb>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AUCKPOLLWEBContextDb") ?? throw new InvalidOperationException("Connection string 'AUCKPOLLWEBContextDb' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,7 +27,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapRazorPages();
 
 app.Run();
