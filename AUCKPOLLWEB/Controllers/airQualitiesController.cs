@@ -58,7 +58,7 @@ namespace AUCKPOLLWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,regionID,collection_date,value,unit")] airQuality airQuality)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(airQuality);
                 await _context.SaveChangesAsync();
@@ -97,7 +97,7 @@ namespace AUCKPOLLWEB.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

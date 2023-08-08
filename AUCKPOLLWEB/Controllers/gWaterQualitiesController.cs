@@ -58,7 +58,7 @@ namespace AUCKPOLLWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,regionID,collection_date,indicator,value,unit")] gWaterQuality gWaterQuality)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(gWaterQuality);
                 await _context.SaveChangesAsync();
@@ -97,7 +97,7 @@ namespace AUCKPOLLWEB.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

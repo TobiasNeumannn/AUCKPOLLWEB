@@ -57,7 +57,7 @@ namespace AUCKPOLLWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("regionID,region_name,region_pop")] regions regions)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(regions);
                 await _context.SaveChangesAsync();
@@ -94,7 +94,7 @@ namespace AUCKPOLLWEB.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
